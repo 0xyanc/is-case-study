@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Instant System Case Study - Real Time Nearby Parking Lots
+  description: |-
+    The goal of this case study is to develop a "server" exposing a REST API that will be called by mobile applications or websites allowing them to display the list of nearby parking lots with the number of available spots etc.
+    This case study is focused on Poitiers with public APIs to fetch data:
+    - [parking lots](https://data.grandpoitiers.fr/api/records/1.0/search/?dataset=mobilite-parkings-grand-poitiers-donnees-metiers&rows=1000&facet=nom_du_parking&facet=zone_tarifaire&facet=statut2&facet=statut3)
+    - [real time available spots](https://data.grandpoitiers.fr/api/records/1.0/search/?dataset=mobilites-stationnement-des-parkings-en-temps-reel&facet=nom)
+  contact:
+    email: yannick.chi@gmail.com
+  version: 1.0.11
+servers:
+  - url: https://instant.system.io/api/v3
+tags:
+  - name: parking
+    description: Everything about parkings
+paths:
+  /parkings:
+    get:
+      tags:
+        - parking
+      summary: Retrieve the list of parking lots
+      description: Retrieve the list of parking lots, this endpoint can be called at startup or after a cache miss as the data is relatively static
+      operationId: getParkings
+      parameters:
+        - name: city
+          in: query
+          description: Value of the city to search for parking spots, poitiers is the default value
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParkingLot'
+  /spots:
+    get:
+      tags:
+        - parking
+      summary: Finds nearby parking lots with available spots
+      description: Finds nearby parking lots with available spots
+      operationId: findParkingSpots
+      parameters:
+        - name: city
+          in: query
+          description: Value of the city to search for parking spots, poitiers is the default value
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParkingSpots'
+        '400':
+          description: Invalid city value
+
+components:
+  schemas:
+    ParkingLot:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        petId:
+          type: integer
+          format: int64
+          example: 198772
+        quantity:
+          type: integer
+          format: int32
+          example: 7
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          example: approved
+          enum:
+            - placed
+            - approved
+            - delivered
+        complete:
+          type: boolean
+    ParkingSpots:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        username:
+          type: string
