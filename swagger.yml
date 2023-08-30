@@ -38,6 +38,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ParkingLot'
+  /parkings/{parkingId}:
+    get:
+      tags:
+        - parking
+      summary: Retrieve the details of a parking by id
+      description: Retrieve the details of a parking by id, this endpoint can be called upon the click on the mobile app to get more details about the parking lot
+      operationId: getParkingById
+      parameters:
+        - name: parkingId
+          in: path
+          description: parking id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParkingLot'
+        '400':
+          description: Invalid parking id
+        '404':
+          description: Parking id not found
   /spots:
     get:
       tags:
@@ -63,43 +88,54 @@ paths:
                   $ref: '#/components/schemas/ParkingSpots'
         '400':
           description: Invalid city value
+        '404':
+          description: City not found
 
 components:
   schemas:
     ParkingLot:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 10
-        petId:
-          type: integer
-          format: int64
-          example: 198772
-        quantity:
+        name:
+          type: string
+          example: THEATRE
+        address:
+          type: string
+          example: 1 Boulevard de Verdun
+        numSpots:
           type: integer
           format: int32
-          example: 7
-        shipDate:
-          type: string
-          format: date-time
-        status:
-          type: string
-          description: Order Status
-          example: approved
-          enum:
-            - placed
-            - approved
-            - delivered
-        complete:
-          type: boolean
+          example: 320
+        maxHeight:
+          type: integer
+          format: int32
+          example: 190
+        costs:
+          type: array
+          description: parking cost for 1 hour / 2 hours / 3 hours / 4 hours / 24 hours
+          items:
+            type: number
+            format: double
+          example: [2,4,6,7.6,17]
     ParkingSpots:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
-          example: 100000
-        username:
+        name:
           type: string
+          example: PALAIS DE JUSTICE
+        capacity:
+          type: integer
+          format: int32
+          example: 70
+        available:
+          type: integer
+          format: int32
+          example: 36
+        longitude:
+          type: number
+          format: double
+          example: 0.3512954265806957
+        latitude:
+          type: number
+          format: double
+          example: 46.58595804860371
