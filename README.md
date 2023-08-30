@@ -10,6 +10,7 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * Only the server side should be implemented, not the mobile application
 
 ## Technology
+* Java 17
 * Spring Boot
 * Maven
 * OpenAPI Specification

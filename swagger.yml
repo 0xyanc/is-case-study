@@ -10,7 +10,7 @@ info:
     email: yannick.chi@gmail.com
   version: 1.0.11
 servers:
-  - url: https://instant.system.io/api/v3
+  - url: https://instant.system.io/api/v1
 tags:
   - name: parking
     description: Everything about parkings
