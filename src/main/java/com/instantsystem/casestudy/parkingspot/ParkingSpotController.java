@@ -34,6 +34,9 @@ public class ParkingSpotController {
      */
     @GetMapping
     public List<ParkingSpot> getParkingSpots(@RequestParam(defaultValue = "poitiers") String city) {
+        if (!city.matches("[a-zA-Z]+")) {
+            throw new CityBadFormatException("Unexpecting characted - only letters are allowed");
+        }
         CityEnum cityEnum = CityEnum.findByName(city);
         if (cityEnum == null) {
             throw new CityNotFoundException("City not found");
@@ -50,6 +53,17 @@ public class ParkingSpotController {
     @ExceptionHandler(CityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleCityNotFoundException(CityNotFoundException ex) {
+        return ex.getMessage();
+    }
+
+    /**
+     * Handle CityBadFormatException thrown when the city contains unexpected characters.
+     * @param ex
+     * @return HTTP 400 with the error message
+     */
+    @ExceptionHandler(CityBadFormatException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleCityBadFormatException(CityBadFormatException ex) {
         return ex.getMessage();
     }
 }
