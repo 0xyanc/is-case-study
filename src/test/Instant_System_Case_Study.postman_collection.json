@@ -41,46 +41,6 @@
 			"response": []
 		},
 		{
-			"name": "/spots - paris",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{host}}:{{port}}/api/v1/spots?city=paris",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"api",
-						"v1",
-						"spots"
-					],
-					"query": [
-						{
-							"key": "city",
-							"value": "paris"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "/spots - 400",
 			"event": [
 				{
