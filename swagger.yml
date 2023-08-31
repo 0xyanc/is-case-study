@@ -131,11 +131,9 @@ components:
           type: integer
           format: int32
           example: 36
-        longitude:
-          type: number
-          format: double
-          example: 0.3512954265806957
-        latitude:
-          type: number
-          format: double
-          example: 46.58595804860371
+        coordinates:
+          type: array
+          items:
+            type: number
+            format: double
+          example: [46.58595804860371, 0.3512954265806957]

@@ -1,7 +1,8 @@
 package com.instantsystem.casestudy.parkingspot.model;
 
-import javax.json.bind.annotation.JsonbCreator;
 import javax.json.bind.annotation.JsonbProperty;
+import java.math.BigDecimal;
+import java.util.List;
 
 public class ParkingSpot {
     @JsonbProperty("nom")
@@ -10,23 +11,8 @@ public class ParkingSpot {
     private int capacity;
     @JsonbProperty("places")
     private int available;
-    private double longitude;
-    private double latitude;
-
-    @JsonbCreator
-    public ParkingSpot(
-            @JsonbProperty("nom") String name,
-            @JsonbProperty("capacite") int capacity,
-            @JsonbProperty("places") int available/*,
-            @JsonbProperty(value = "geo_point_2d", nillable = true) List<BigDecimal> coordinates*/) {
-        this.name = name;
-        this.capacity = capacity;
-        this.available = available;
-//        if (coordinates != null) {
-//            this.latitude = coordinates.get(0).doubleValue();
-//            this.longitude = coordinates.get(1).doubleValue();
-//        }
-    }
+    @JsonbProperty("geo_point_2d")
+    private List<BigDecimal> coordinates;
 
     public String getName() {
         return name;
@@ -52,19 +38,11 @@ public class ParkingSpot {
         this.available = available;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public List<BigDecimal> getCoordinates() {
+        return coordinates;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setCoordinates(List<BigDecimal> coordinates) {
+        this.coordinates = coordinates;
     }
 }

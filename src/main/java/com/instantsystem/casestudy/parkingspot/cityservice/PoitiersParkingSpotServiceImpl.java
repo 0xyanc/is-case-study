@@ -40,40 +40,19 @@ public class PoitiersParkingSpotServiceImpl implements ParkingSpotService {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response =  restTemplate.getForEntity(realTimeParkingUrl, String.class);
 
-
         JSONObject obj = new JSONObject(response.getBody());
         JSONArray records = obj.getJSONArray("records");
-//        for (Object rec : records) {
-//            System.out.println(rec);
-//        }
 
 
         Jsonb jsonb = JsonbBuilder.create();
         List<Parking> parking = jsonb.fromJson(records.toString(), new ArrayList<Parking>(){}.getClass().getGenericSuperclass());
-//        ParkingList parkingList = jsonb.fromJson(response.getBody(), ParkingList.class);
 
-//        var result = new ArrayList<ParkingSpot>();
-//        parkingList.getParkingSpots().forEach(parking -> {
-//            result.add(new ParkingSpot(
-//                    parking.get
-//            ))
-//        });
-//        return parking;
-//        return List.of(new ParkingSpot("name"));
         List<ParkingSpot> result = new ArrayList<>();
         parking.forEach(p -> {
-            result.add(p.getParkingSpot());
-        });
+                result.add(p.getParkingSpot());
+            }
+        );
+
         return result;
-//        return List.of(
-////                new ParkingSpot("123"
-//                new ParkingSpot(
-//                        "PALAIS DE JUSTICE",
-//                        70,
-//                        36
-////                            List.of(BigDecimal.ONE, BigDecimal.TEN)
-////                        List.of(46.58595804860371, 0.3512954265806957)
-//                )
-//        );
     }
 }

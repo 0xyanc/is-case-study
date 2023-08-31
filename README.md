@@ -31,7 +31,6 @@ This case study is focused on Poitiers with public APIs to fetch data:
 
 ## Code Design
 * Strategy Pattern to allow adding new city with different data format easily. This is implemented through the map of ParkingSpotService in ParkingSpotController
-* ParisParkingSpotServiceImpl was added with mocked data to show this.
 
 ### Tests
 * Postman collection is used for a scripted set of API requests
@@ -44,7 +43,7 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * Traffic management handling bots / surge of requests
 * Add Logback for file rolling and patterned logs
 * Configuration files for different environments
+* Improve the logic of JSON parsing from the response from "real time parking" endpoint and add checks on presence/absence of required fields (e.g. geo_point_2d). Otherwise find the coordinates another way.
 
 ## TODO
-* Get url from config and parse JSON
 * Unit tests
