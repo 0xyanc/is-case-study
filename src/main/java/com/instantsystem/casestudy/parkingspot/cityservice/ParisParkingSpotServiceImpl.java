@@ -1,7 +1,7 @@
 package com.instantsystem.casestudy.parkingspot.cityservice;
 
-import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
 import com.instantsystem.casestudy.parkingspot.ParkingSpotService;
+import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +17,16 @@ public class ParisParkingSpotServiceImpl implements ParkingSpotService {
      * @return the list of ParkingSpot in Paris.
      */
     public List<ParkingSpot> getParkingSpots() {
-        return List.of(
-                new ParkingSpot(
-                        "VINCI",
-                        120,
-                        2,
-                        2.400794,
-                        48.839569
-                )
-        );
+        return null;
+//        return List.of(
+//                new ParkingSpot("123", "VINCI")
+//                new ParkingSpot(
+//                        "123",
+//                        "VINCI",
+//                        120,
+//                        2,
+//                        List.of(48.839569, 2.400794)
+//                )
+//        );
     }
 }
