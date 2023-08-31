@@ -1,6 +1,6 @@
 package com.instantsystem.casestudy.parkingspot.cityservice;
 
-import com.instantsystem.casestudy.parkingspot.ParkingSpot;
+import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
 import com.instantsystem.casestudy.parkingspot.ParkingSpotService;
 import org.springframework.stereotype.Service;
 

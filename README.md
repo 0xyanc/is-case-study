@@ -14,6 +14,7 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * Spring Boot
 * Maven
 * OpenAPI Specification
+* Postman
 
 ## API Design
 ### Implemented Design
@@ -27,10 +28,21 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * The server would be in charge of searching the parking lots in range and return the results along with the distance
 * The benefit is to have less work/faster load on the mobile app and smaller payload for short distances but would require more network calls when the user zooms out
 
+## Code Design
+Strategy Pattern to allow adding new city with different data format easily. ParisParkingSpotServiceImpl was added with mocked data to show this.
+
+### Tests
+Postman collection is used for a scripted set of API requests
+
 ## Deployment
 Ideally an image would be created in the CI/CD pipeline and then deployed in a Kubernetes cluster
 
 ## Improvements
-Caching
-Authorisation
-Traffic management (handling bots/surge of requests)
+Caching when calling the public APIs with a low TTL for the real time endpoint
+Authentication / Authorisation ? 
+Traffic management handling bots / surge of requests
+Add Logback for file rolling and patterned logs
+
+## TODO
+Get url from config and parse JSON
+Unit tests

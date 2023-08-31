@@ -1,5 +1,11 @@
 package com.instantsystem.casestudy.parkingspot;
 
+import com.instantsystem.casestudy.parkingspot.exceptions.CityBadFormatException;
+import com.instantsystem.casestudy.parkingspot.exceptions.CityNotFoundException;
+import com.instantsystem.casestudy.parkingspot.model.CityEnum;
+import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +18,8 @@ import java.util.Map;
 @RestController
 @RequestMapping(path="api/v1/spots")
 public class ParkingSpotController {
+
+    private Logger log = LoggerFactory.getLogger(ParkingSpotController.class);
 
     /**
      * Map of all the parking spot services where the key is the bean name. Allows for flexibility when adding a new city where the data format is different
@@ -35,12 +43,15 @@ public class ParkingSpotController {
     @GetMapping
     public List<ParkingSpot> getParkingSpots(@RequestParam(defaultValue = "poitiers") String city) {
         if (!city.matches("[a-zA-Z]+")) {
-            throw new CityBadFormatException("Unexpecting characted - only letters are allowed");
+            log.debug("Unexpected character in city " + city);
+            throw new CityBadFormatException("Unexpected character - only letters are allowed");
         }
         CityEnum cityEnum = CityEnum.findByName(city);
         if (cityEnum == null) {
+            log.debug("City not found " + city);
             throw new CityNotFoundException("City not found");
         } else {
+            log.info("Getting parking spots for " + city);
             return parkingSpotServiceMap.get(cityEnum.name().toLowerCase()).getParkingSpots();
         }
     }

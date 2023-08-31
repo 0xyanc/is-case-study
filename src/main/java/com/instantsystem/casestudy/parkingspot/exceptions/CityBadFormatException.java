@@ -1,4 +1,4 @@
-package com.instantsystem.casestudy.parkingspot;
+package com.instantsystem.casestudy.parkingspot.exceptions;
 
 /**
  * Exception thrown when an unexpected character is requested.

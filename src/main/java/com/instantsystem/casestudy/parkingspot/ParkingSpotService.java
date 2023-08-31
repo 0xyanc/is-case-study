@@ -1,5 +1,7 @@
 package com.instantsystem.casestudy.parkingspot;
 
+import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
+
 import java.util.List;
 
 /**

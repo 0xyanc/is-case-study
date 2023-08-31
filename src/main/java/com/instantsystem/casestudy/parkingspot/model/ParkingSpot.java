@@ -1,4 +1,4 @@
-package com.instantsystem.casestudy.parkingspot;
+package com.instantsystem.casestudy.parkingspot.model;
 
 /**
  * ParkingSpot entity showing the location of the parking lot and the number of available spots.

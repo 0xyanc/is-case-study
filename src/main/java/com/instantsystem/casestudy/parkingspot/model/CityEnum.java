@@ -1,4 +1,4 @@
-package com.instantsystem.casestudy.parkingspot;
+package com.instantsystem.casestudy.parkingspot.model;
 
 /**
  * Enum representing all cities supported by this application.
