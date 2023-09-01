@@ -1,4 +1,4 @@
-package com.instantsystem.casestudy.parkingspot;
+package com.instantsystem.casestudy.parkingspot.cityservice;
 
 import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
 

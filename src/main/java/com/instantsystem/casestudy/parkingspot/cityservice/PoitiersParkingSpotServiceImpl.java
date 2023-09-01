@@ -1,7 +1,6 @@
 package com.instantsystem.casestudy.parkingspot.cityservice;
 
 import com.instantsystem.casestudy.parkingspot.ParkingSpotController;
-import com.instantsystem.casestudy.parkingspot.ParkingSpotService;
 import com.instantsystem.casestudy.parkingspot.model.Parking;
 import com.instantsystem.casestudy.parkingspot.model.ParkingSpot;
 import org.json.JSONArray;

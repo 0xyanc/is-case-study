@@ -1,5 +1,6 @@
 package com.instantsystem.casestudy.parkingspot;
 
+import com.instantsystem.casestudy.parkingspot.cityservice.ParkingSpotService;
 import com.instantsystem.casestudy.parkingspot.exceptions.CityBadFormatException;
 import com.instantsystem.casestudy.parkingspot.exceptions.CityNotFoundException;
 import com.instantsystem.casestudy.parkingspot.model.CityEnum;
