@@ -34,9 +34,9 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * Strategy Pattern can be used to allow adding new city with different data format easily. This would be implemented through a map of ParkingSpotService in ParkingSpotController
 * I ran in some trouble injecting the dependencies for the unit tests of the controller so I removed this part for now
 * All available cities are stored in CityEnum, a 404 Not Found will be returned a requested city does not exist in the enum
-* 
 
 ### Tests
+* Minimal unit tests are written to test the functionalities but it is nowhere near enough 
 * A Postman collection is used for a scripted set of API requests
 
 ## Improvements
