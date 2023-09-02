@@ -4,8 +4,7 @@ package com.instantsystem.casestudy.parkingspot.model;
  * Enum representing all cities supported by this application.
  */
 public enum CityEnum {
-    POITIERS,
-    PARIS;
+    POITIERS;
 
     /**
      * Find the CityEnum corresponding to the name parameter.

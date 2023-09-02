@@ -4,6 +4,9 @@ import javax.json.bind.annotation.JsonbProperty;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * ParkingSpot entity used for the API response
+ */
 public class ParkingSpot {
     @JsonbProperty("nom")
     private String name;
