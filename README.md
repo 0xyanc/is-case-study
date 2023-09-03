@@ -23,7 +23,7 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * The choice was made to allow a query parameter for the city. We could imagine there would be a city selector in the app for the user to choose where he is currently located
 * I imagine the mobile app calling the API for available parking spots which will return all parking spots. The app stores the data locally, displays on the map depending on the zoom and calculates the distance.
 * The benefit is to have fewer network calls but the tradeoff is more work on the mobile app 
-* /parkings and /parkings/{parkingId} can be used to get more details for a specific parking lot. For example when a user clicks on the interface to check the max height
+* /parkings and /parkings/{parkingId} can be used to get more details for a specific parking lot. For example when a user clicks on the interface to check the max height. (not implemented)
 
 ### Alternative Design
 * Another way to design the API would be pass coordinates and maxDistance parameters
@@ -36,7 +36,7 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * All available cities are stored in CityEnum, a 404 Not Found will be returned a requested city does not exist in the enum
 
 ### Tests
-* Minimal unit tests are written to test the functionalities but it is nowhere near enough 
+* Minimal unit tests are written to test the functionalities but it is not near enough for an actual project
 * A Postman collection is used for a scripted set of API requests
 
 ## Improvements
@@ -52,3 +52,4 @@ This case study is focused on Poitiers with public APIs to fetch data:
 * Mock the API call to real time parking API / Add mock JSON files to test different response bodies
 * Add exhaustive test cases for all branches of the code (e.g. in ParkingSpotService: different return calls from the external API, more tests on the returned JSON)
 * Integration tests that requests all the layers
+* The part of code that call external endpoint can be extracted out in a common helper class so that it can be reused by other services
